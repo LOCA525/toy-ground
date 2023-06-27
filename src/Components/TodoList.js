@@ -1,17 +1,23 @@
 import React from "react";
 import { styled } from "styled-components";
 import TodoCard from "./TodoCard";
-
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 const TodoList = ({ todoData, setTodoData }) => {
   const onRemove = (id) => {
     setTodoData(todoData.filter((item) => item.id !== id));
   };
   const onDone = (id) => {
-    const toDone = todoData.filter((item) => item.id === id)[0];
-    toDone.done = !toDone.done;
-    setTodoData([...todoData]);
-    // 흠..
+    // const toDone = todoData.filter((todoData요소) => todoData요소.id === id)[0];
+    // toDone.done = !toDone.done;
+    // setTodoData([...todoData]);
+
+    const toDone = todoData.map((item) => {
+      return item.id === id ? { ...item, done: !item.done } : item;
+    });
+    setTodoData(toDone);
   };
+
   return (
     <div>
       <TodoListContainer>

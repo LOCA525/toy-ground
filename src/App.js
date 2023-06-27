@@ -1,8 +1,8 @@
 import "./App.css";
 import TodoListPage from "./pages/todoListPage";
-import { styled } from "styled-components";
 import Nav from "./Components/Nav";
 import { useState } from "react";
+import { styled } from "styled-components";
 
 function App() {
   const [istodoPage, setIsTodoPage] = useState(true);
